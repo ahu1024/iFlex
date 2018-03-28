@@ -1,11 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
 
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, './demo/iFlex'),
+    publicPath: '/demo/iFlex/',
     filename: 'build.js'
   },
   module: {
@@ -69,12 +71,26 @@ module.exports = {
       }
     ]
   },
+
+  plugins: [
+      // https://github.com/ampedandwired/html-webpack-plugin
+      new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template:  'index.ejs',
+          inject: true,
+          hash: true,
+          favicon: false,
+          minify: false,
+          title: 'iFlex',
+      })
+  ],
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
+  
   devServer: {
     historyApiFallback: true,
     noInfo: true,
