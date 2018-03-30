@@ -8,6 +8,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './demo/iFlex'),
     publicPath: '/demo/iFlex/',
+    // path: path.resolve(__dirname, './demo'),
+    // publicPath: '/',
     filename: 'build.js'
   },
   module: {
